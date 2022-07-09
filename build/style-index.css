@@ -4,6 +4,7 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+
 img {
   max-width: 100%;
   height: auto;
@@ -679,6 +680,17 @@ body.login {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
+}
+.menu .sub-menu {
+  display: flex !important;
+  flex-direction: column !important;
+  opacity: 0;
+}
+.menu .menu-item-has-children {
+  transition: all .5s ease-out;
+}
+.menu .menu-item-has-children:hover .sub-menu {
+  opacity: 1;
 }
 @media (min-width: 960px) {
   .site-header__menu {
