@@ -15,13 +15,25 @@
         <div class="full-width-split__inner">
           <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
           <?php 
+          $today = date('Ymd');
               $args = array( 
                 'posts_per_page' => 2,
-                'post_type' => 'event'
+                'post_type' => 'event',
+                'meta_key' => 'event_date',
+                'orderby' => 'meta_value_num',
+                'order' => 'ASC',
+                'meta_query' => array(
+                  array(
+                    'key' => 'event_date',
+                    'compare' => '>=',
+                    'value' => $today,
+                    'type' => 'numeric'
+                  )
+                )
               );
               $query = new WP_Query( $args );
               
-              while ($query-> have_posts() ) {
+              if ($query-> have_posts() ) {
                 $query->the_post(); ?>
                 <div class="event-summary">
                   <a class="event-summary__date t-center" href="<?php the_permalink();?>">
@@ -40,11 +52,13 @@
                     }?><a href="<?php the_permalink();?>" class="nu gray">Read more</a></p>
                   </div>
                 </div>
-             <?php }
+                <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event')?>" class="btn btn--blue">View All Events</a></p>
+             <?php } else {
+              ?> <p>No upcoming events...</p>
+              <?php  
+             }
              wp_reset_postdata();
             ?>
-
-          <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event')?>" class="btn btn--blue">View All Events</a></p>
         </div>
       </div>
       <div class="full-width-split__two">
