@@ -35,6 +35,7 @@ get_header(); ?>
     <?php endwhile; else : ?>
       <p>Posts not found..</p>
     <?php endif; ?>
+    <p>Looking for a recap of past events? <a href="<?php echo site_url('/past-events')?>">Check out our past events archive</a>.</p>
   </div>
   <?php echo paginate_links(); ?>
 </div>
