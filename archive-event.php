@@ -29,11 +29,11 @@ get_header(); ?>
         </a>
         <div class="event-summary__content">
         <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink();?>"><?php the_title();?></a></h5>
-        <p><?php echo wp_trim_words(get_the_content(), 18)?><a href="<?php the_permalink();?>" class="nu gray">Read more</a></p>
+        
         </div>
     </div>
     <?php endwhile; else : ?>
-      <p>Posts not found..</p>
+      <p>No upcoming events..</p>
     <?php endif; ?>
     <p>Looking for a recap of past events? <a href="<?php echo site_url('/past-events')?>">Check out our past events archive</a>.</p>
   </div>
